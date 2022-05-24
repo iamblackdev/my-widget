@@ -1,3 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Raleway", sans-serif;
+}
+.app {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+.message-container {
+  box-shadow: 0 0 18px 8px rgba(0, 0, 0, 0.1), 0 0 32px 32px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  width: 100vw;
+  right: -25px;
+  bottom: 75px;
+  position: absolute;
+  transition: bottom 0.2s ease;
+}
+.message-container.hidden {
+  bottom: -100vh;
+}
+.message-container .content {
+  padding: 30px 20px;
+  display: flex;
+  background-color: #fff;
+  row-gap: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.message-container h2 {
+  margin: 0;
+  padding: 20px 20px;
+  color: #fff;
+  background-color: #ff7f00;
+}
+.message-container form input {
+  border-radius: 5px;
+  border: 1px solid rgba(71, 71, 71, 0.5);
+  padding: 10px;
+  font-family: "Raleway", sans-serif;
+}
+.message-container form input:focus,
+.message-container form textarea:focus {
+  outline: 0;
+}
+.message-container form textarea {
+  height: 100px;
+  padding: 10px;
+  resize: none;
+  border-radius: 5px;
+  border: 1px solid rgba(71, 71, 71, 0.5);
+  font-family: "Raleway", sans-serif;
+}
+.message-container form textarea::placeholder {
+  font-family: "Raleway", sans-serif;
+}
+.message-container form button {
+  cursor: pointer;
+  background-color: #ff7f00;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px;
+  filter: brightness(1);
+  transition: filter 0.4s ease;
+}
+.message-container form button:hover {
+  filter: brightness(0.85);
+}
 .icon {
   cursor: pointer;
   width: 70%;
@@ -10,59 +85,114 @@
   transform: scale(0);
 }
 .button-container {
-  background-color: #04b73f;
+  background-color: #ff7f00;
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  filter: brightness(1);
+  transition: filter 0.4s ease;
 }
-.message-container {
-  box-shadow: 0 0 18px 8px rgba(0, 0, 0, 0.1), 0 0 32px 32px rgba(0, 0, 0, 0.08);
-  width: 400px;
-  right: -25px;
-  bottom: 75px;
-  max-height: 400px;
+.button-container:hover {
+  filter: brightness(0.85);
+}
+
+/* loader */
+
+.loader {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  transition: max-height 0.2s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-.message-container.hidden {
-  max-height: 0px;
-}
-.message-container h2 {
-  margin: 0;
-  padding: 20px 20px;
-  color: #fff;
-  background-color: #04b73f;
-}
-.message-container .content {
-  margin: 20px 10px;
-  border: 1px solid #dbdbdb;
-  padding: 10px;
+  top: 0;
+  left: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #202022;
+  opacity: 0.5;
+}
+
+.sk-chase {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:before {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 25%;
   background-color: #fff;
-  flex-direction: column;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
 }
-.message-container form * {
-  margin: 5px 0;
+
+.sk-chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
 }
-.message-container form input {
-  padding: 10px;
+.sk-chase-dot:nth-child(2) {
+  animation-delay: -1s;
 }
-.message-container form textarea {
-  height: 100px;
-  padding: 10px;
+.sk-chase-dot:nth-child(3) {
+  animation-delay: -0.9s;
 }
-.message-container form textarea::placeholder {
-  font-family: Helvetica, Arial, sans-serif;
+.sk-chase-dot:nth-child(4) {
+  animation-delay: -0.8s;
 }
-.message-container form button {
-  cursor: pointer;
-  background-color: #04b73f;
-  color: #fff;
-  border: 0;
-  border-radius: 4px;
-  padding: 10px;
+.sk-chase-dot:nth-child(5) {
+  animation-delay: -0.7s;
 }
-.message-container form button:hover {
-  background-color: #16632f;
+.sk-chase-dot:nth-child(6) {
+  animation-delay: -0.6s;
+}
+.sk-chase-dot:nth-child(1):before {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2):before {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3):before {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4):before {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5):before {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6):before {
+  animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.4);
+  }
+  100%,
+  0% {
+    transform: scale(1);
+  }
 }

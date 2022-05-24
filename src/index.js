@@ -6,6 +6,6 @@ const root = document.getElementById("my-widget");
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <App symbol={root.dataset.symbol} />
+    <App {...root.dataset} />
   </React.StrictMode>
 );
