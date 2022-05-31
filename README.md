@@ -17,7 +17,7 @@ You also need to add this css and javascript file to the buttom of your web page
 <script src="https://supportwidget.vercel.app/"></script>
 ```
 
-### props
+### Props
 
 | Prop                 | Required | Type   | Default                              |
 | -------------------- | -------- | ------ | ------------------------------------ |
