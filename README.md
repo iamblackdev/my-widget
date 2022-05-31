@@ -4,10 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Usage
 
-Create a div with an id="my-widget" and data-email="yoursupport@email.com". You can also pass an optional primary color data-primary_color="colorcode"
+Create a div with an id="support_widget" and data-email="yoursupport@email.com".
 
 ```
-<div id="my-widget" data-email="yoursupport@email.com"></div>
+<div id="support_widget" data-email="yoursupport@email.com"></div>
 ```
 
 You also need to add this css and javascript file to the buttom of your web page close to the body tag.
