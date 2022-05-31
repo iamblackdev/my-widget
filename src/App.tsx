@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import "./App.css";
+import "./App.scss";
 import sendMail from "./api/sendMail";
 
 const validationSchema = Yup.object().shape({
@@ -11,26 +11,50 @@ const validationSchema = Yup.object().shape({
   message: Yup.string().required().min(3).label("Message"),
 });
 
+type feildsType = {
+  customer_name: string;
+  reply_to: string;
+  message: string;
+};
+
 const href = window.location.href;
 const hostName = window.location.hostname;
-function App({ email, primary_color, name, heading, success_message }) {
-  const form = useRef();
 
-  const [messagebox, setMessagebox] = useState(false);
-  const [messageSent, setMessageSent] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+interface props {
+  email: string | undefined;
+  primary_color?: string;
+  name?: string;
+  heading?: string;
+  success_message?: string;
+}
+
+const App: React.FC<props> = ({
+  email,
+  primary_color,
+  name,
+  heading,
+  success_message,
+}) => {
+  const form = useRef<HTMLFormElement>(null);
+
+  const [messagebox, setMessagebox] = useState<boolean>(false);
+  const [messageSent, setMessageSent] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const toggleMessageBox = () => {
     setMessageSent(false);
     setMessagebox((prev) => !prev);
   };
 
-  const onSubmit = async (e, { resetForm }) => {
+  const onSubmit = async (
+    e: feildsType,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     setError("");
     setLoading(true);
     try {
-      await sendMail(form.current);
+      await sendMail(form.current as HTMLFormElement);
       setLoading(false);
       setMessageSent(true);
       resetForm();
@@ -41,7 +65,7 @@ function App({ email, primary_color, name, heading, success_message }) {
   };
 
   return (
-    <div className="app">
+    <div className="support_widget">
       <div className={`message-container ${messagebox ? "" : "hidden"}`}>
         {messageSent ? (
           <div className="heading" style={{ backgroundColor: primary_color }}>
@@ -120,7 +144,7 @@ function App({ email, primary_color, name, heading, success_message }) {
                     name="customer_name"
                     type="text"
                     placeholder="Enter your full name"
-                    value={values.name}
+                    value={values.customer_name}
                     onBlur={() => setFieldTouched("customer_name")}
                     onChange={handleChange("customer_name")}
                   />
@@ -180,6 +204,6 @@ function App({ email, primary_color, name, heading, success_message }) {
       </div>
     </div>
   );
-}
+};
 
 export default App;
