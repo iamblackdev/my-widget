@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
 
 const href = window.location.href;
 const hostName = window.location.hostname;
-function App({ email, primary_color }) {
+function App({ email, primary_color, name, heading, success_message }) {
   const form = useRef();
 
   const [messagebox, setMessagebox] = useState(false);
@@ -44,9 +44,9 @@ function App({ email, primary_color }) {
     <div className="app">
       <div className={`message-container ${messagebox ? "" : "hidden"}`}>
         {messageSent ? (
-          <h2 style={{ backgroundColor: primary_color }}>
-            Your message was sent successfully.
-          </h2>
+          <div className="heading" style={{ backgroundColor: primary_color }}>
+            <h2>{success_message || "Your message was sent successfully."}</h2>
+          </div>
         ) : (
           <Formik
             initialValues={{
@@ -66,9 +66,13 @@ function App({ email, primary_color }) {
               touched,
             }) => (
               <>
-                <h2 style={{ backgroundColor: primary_color }}>
-                  We're not here, drop us an email...
-                </h2>
+                <div
+                  className="heading"
+                  style={{ backgroundColor: primary_color }}
+                >
+                  {name && <h3>{name}</h3>}
+                  <h2>{heading || "Welcome, You can drop us an email..."}</h2>
+                </div>
                 <form
                   ref={form}
                   className="content"
