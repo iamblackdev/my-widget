@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Usage
 
-Create a div with an id="support_widget" and data-email="yoursupport@email.com".
+Create a div with an `id="support_widget"` and `data-email="yoursupport@email.com"`.
 
 ```
 <div id="support_widget" data-email="yoursupport@email.com"></div>
