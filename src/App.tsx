@@ -36,8 +36,8 @@ const App: React.FC<props> = ({
   success_message,
 }) => {
   const form = useRef<HTMLFormElement>(null);
-  const [messagebox, setMessagebox] = useState<boolean>(false);
-  const [messageSent, setMessageSent] = useState<boolean>(false);
+  const [messagebox, setMessagebox] = useState<boolean>(true);
+  const [messageSent, setMessageSent] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -68,6 +68,28 @@ const App: React.FC<props> = ({
       <div className={`message-container ${messagebox ? "" : "hidden"}`}>
         {messageSent ? (
           <div className="heading" style={{ backgroundColor: primary_color }}>
+            <svg
+              width="23"
+              height="23"
+              viewBox="0 0 23 23"
+              className="close_sign"
+              onClick={toggleMessageBox}
+            >
+              <path
+                fill="transparent"
+                strokeWidth="3"
+                stroke="white"
+                strokeLinecap="round"
+                d="M 3 16.5 L 17 2.5"
+              ></path>
+              <path
+                fill="transparent"
+                strokeWidth="3"
+                stroke="white"
+                strokeLinecap="round"
+                d="M 3 2.5 L 17 16.346"
+              ></path>
+            </svg>
             <h2>{success_message || "Your message was sent successfully."}</h2>
           </div>
         ) : (
