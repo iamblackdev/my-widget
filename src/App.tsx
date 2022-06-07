@@ -36,8 +36,8 @@ const App: React.FC<props> = ({
   success_message,
 }) => {
   const form = useRef<HTMLFormElement>(null);
-  const [messagebox, setMessagebox] = useState<boolean>(true);
-  const [messageSent, setMessageSent] = useState<boolean>(true);
+  const [messagebox, setMessagebox] = useState<boolean>(false);
+  const [messageSent, setMessageSent] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
